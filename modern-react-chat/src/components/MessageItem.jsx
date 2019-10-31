@@ -6,31 +6,30 @@ import Typography from '@material-ui/core/Typography';
 
 class MessageItem extends React.Component {
 
-render(){
-    const { classes } = this.props;
-    return(
-        <ListItem alignItems="flex-start">
-            <ListItemText
-            primary={` This message is n°`+ this.props.id}
-            secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body"
-                    className={classes.inline}
-                    color="textPrimary"
-                >
-                {this.props.author} -
-                </Typography>
-                {this.props.message}
-                </React.Fragment>
-          }
-        />
-        </ListItem>
-       
-    )
-    
-}
+    render() {
+        const { classes } = this.props;
+        return(
+            <ListItem alignItems="center"><br/>
+                <ListItemText
+                primary={` This message is send by `}
+                secondary={
+                    <React.Fragment>
+                        <Typography
+                            component="span"
+                            variant="body2"
+                            className={classes.inline}
+                            color="textPrimary"
+                        >
+                        </Typography>
+                    {this.props.message}
+                    </React.Fragment>
+                }   
+            />
+            </ListItem>
+        
+        )
+        
+    }
 
 }
 

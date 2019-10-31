@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 class Chat extends React.Component {
         render() {
             return (
-                <Container maxWidth="sm">
+                <Container maxWidth="xs">
                     <MessageList/>
                     <MessageBar/>
                 </Container>

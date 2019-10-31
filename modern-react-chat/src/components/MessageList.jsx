@@ -1,25 +1,30 @@
 import React, { PureComponent } from 'react';
+import { connect } from "react-redux";
+import { getMessage } from "../redux/selectors";
+
+
 import { withStyles } from '@material-ui/core/styles';
 import MessageItem from './MessageItem';
 import List from '@material-ui/core/List';
 
 class MessageList extends PureComponent {
-    state = {
-        messages: [
-            { id: 1, author: 'Jean ', message: 'Je suis en week-end aujourd\'hui ' },
-            { id: 2, author: 'Pierre ', message: 'Je suis en full time sur le PHP ' },
-            { id: 3, author: 'Nicolas ', message: 'Je fais ma presentation du projet ' }
-        ]
-    };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+        input: '',
+        messages: []
+        }
+    }
 
     render() {
         const { classes } = this.props;
         return (
             <List className={classes.root}>
                 {this.state.messages.map((item) => { return <MessageItem
+                key={item.id}
                 id={item.id}
                 message={item.message} 
-                author={item.author}
                 />
                 })}
             </List>
@@ -37,5 +42,7 @@ export default withStyles(theme => ({
     inline: {
         display: 'inline',
     },
-}))(MessageList);
+})) (connect(state => ({ messages: getMessage(state) }) 
+)(MessageList));
+
 
