@@ -6,14 +6,16 @@ import { getMessage } from "../redux/selectors";
 import { withStyles } from '@material-ui/core/styles';
 import MessageItem from './MessageItem';
 import List from '@material-ui/core/List';
+import { getMessageServer } from '../redux/actions';
 
 class MessageList extends PureComponent {
 
     constructor(props) {
         super(props);
         this.state = {
-        input: '',
-        messages: []
+            input: '',
+            messages: [],
+            messageServer: []
         }
     }
 
@@ -21,6 +23,11 @@ class MessageList extends PureComponent {
         const { classes } = this.props;
         return (
             <List className={classes.root}>
+                <div>
+                    <ul>
+                        { this.state.messageServer.map((item) => { return <li onChange={this.getMessageServer}>{item.username}</li>})}
+                    </ul>
+                </div>
                 {this.state.messages.map((item) => { return <MessageItem
                 key={item.id}
                 id={item.id}
@@ -42,7 +49,7 @@ export default withStyles(theme => ({
     inline: {
         display: 'inline',
     },
-})) (connect(state => ({ messages: getMessage(state) }) 
+})) (connect(state => ({ messages: getMessage(state) }),  { getMessageServer}
 )(MessageList));
 
 

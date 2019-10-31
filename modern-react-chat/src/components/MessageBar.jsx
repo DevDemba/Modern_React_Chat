@@ -21,7 +21,7 @@ class MessageBar extends React.Component {
             this.setState({input: e.target.value});  
           /*    console.log('handleChange change de valeur') */
         }
-
+        
         handleAddMessage = (e) => {
             e.preventDefault();
             const currentMessage = this.state.input;
